@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +11,60 @@
     " crossorigin="anonymous "></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="myCtrl.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="error.css" />
     <script src="myApp.js"></script>
+    <script src="myCtrl.js"></script>
+
 </head>
+
 <body ng-controller="myCtrl">
-    
+
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1>See all of the movies 🎥 </h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <form name="searchUser">
+            <h2>Search for a movie:</h2>
+            <input type="search" required placeholder="Die Hard" ng-model="movie"></input>
+            <input type="submit" value="search" ng-click="search(movie)"></input>
+
+        </form>
+
+        <div id="error">
+            <h1>{{error}}</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12 col-xs-12">
+                <div class="movie-view" ng-show="movie">
+                    <table>
+                        <th>Name</th>
+                        <th>Actors</th>
+                        <th>Rating</th>
+                        <th>Poster</th>
+
+                        <tbody>
+                            <tr>
+
+                                <td>{{title}}</td>
+                                <td>{{mainActors[0]}}</td>
+                                </td>
+                                <td>{{rated}}</td>
+                                <td>
+                                    <img src="{{poster}}">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
