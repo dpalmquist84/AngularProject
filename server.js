@@ -17,15 +17,10 @@ var app = express();
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
 
-// BodyParser makes it easy for our server to interpret data sent to it.
-// The code below is pretty standard.
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-// parse application/json
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static("app/public"));
 
 // ================================================================================
 // ROUTER
@@ -33,15 +28,13 @@ app.use(bodyParser.json());
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
 
-require('.index.html')(app);
-app.get("/", function(req, res) {
-    res.end(index.html)
-});
+// require("./routes/apiRoutes")(app);
+require("./app/routes/htmlRoutes")(app);
 
-// ==============================================================================
+// =============================================================================
 // LISTENER
 // The below code effectively "starts" our server
-// ==============================================================================
+// =============================================================================
 
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
