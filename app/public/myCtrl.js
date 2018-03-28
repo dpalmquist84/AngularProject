@@ -32,7 +32,7 @@ app.controller("myCtrl", function($scope, $http){
 
         $scope.mainActors = $scope.actors.split(",")
         console.log($scope.mainActors);
-        console.log($scope.mainActors[0])
+        console.log($scope.m$sainActors[0])
         
         
     }
